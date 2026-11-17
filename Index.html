@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>OpsTwin | LinkedIn Post</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(circle at top,#1a3555,#0b1220 70%);color:#f5f7fc;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    main{min-height:100dvh;max-width:450px;margin:0 auto;padding:30px;display:flex;flex-direction:column;justify-content:center;gap:17px;text-align:center}
+    .logo{width:64px;height:64px;margin:0 auto 6px;display:grid;place-items:center;border-radius:17px;background:#0a66c2;color:white;font:bold 35px Arial,sans-serif}
+    h1{font-size:26px;letter-spacing:-.6px;line-height:1.35;margin:0 0 20px}
+    a{display:flex;justify-content:center;align-items:center;min-height:60px;padding:14px;border-radius:15px;background:#0a66c2;color:#fff;font-size:17px;font-weight:700;text-decoration:none}
+    a.secondary{background:#26374d;border:1px solid #526681}
+    a:focus-visible{outline:3px solid #9dd6ff;outline-offset:3px}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="logo" aria-label="LinkedIn">in</div>
+    <h1>Explore OpsTwin on LinkedIn</h1>
+    <a id="app" href="https://lnkd.in/p/d2SP2Fg9">Open in LinkedIn App</a>
+    <a class="secondary" href="https://lnkd.in/p/d2SP2Fg9" target="_blank" rel="noopener noreferrer">Open in Browser</a>
+  </main>
+  <script>
+    (function(){
+      var url='https://lnkd.in/p/d2SP2Fg9';
+      if(/Android/i.test(navigator.userAgent)){
+        document.getElementById('app').href='intent://'+url.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.linkedin.android;S.browser_fallback_url='+encodeURIComponent(url)+';end';
+      }
+    })();
+  </script>
+</body>
+</html>
