@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpsTwin on LinkedIn</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --bg:#0E1116; --card:#151A21; --line:#2A303A; --ink:#F3F1EC; --mut:#A7ADB8; --acc:#F5A623; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: Vazirmatn, Tahoma, system-ui, sans-serif; }
+  main { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 18px; padding: 32px 20px; max-width: 460px; margin: 0 auto; text-align: center; }
+  h1 { margin: 0; font-size: 26px; }
+  p { margin: 0; color: var(--mut); line-height: 1.8; font-size: 15px; }
+  a.btn { display: block; padding: 16px; border-radius: 14px; background: var(--acc); color: #0E1116; font-weight: 700; font-size: 18px; text-decoration: none; }
+  .hint { border: 1px solid var(--line); background: var(--card); border-radius: 14px; padding: 14px; font-size: 14px; color: var(--mut); line-height: 1.9; }
+  .hint b { color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>OpsTwin · Hospitality Digital Twin</h1>
+  <p id="status">در حال باز کردن پست در لینکدین…</p>
+  <a class="btn" id="go" href="https://lnkd.in/p/d2SP2Fg9">باز کردن پست در لینکدین</a>
+  <div class="hint" id="hint" hidden>
+    اگر داخل اینستاگرام باز نشد: بالای صفحه روی <b>⋯</b> بزنید و
+    <b>Open in external browser</b> (یا Open in Chrome / Safari) را انتخاب کنید.
+  </div>
+</main>
+<script>
+(function () {
+  // The LinkedIn post. A full linkedin.com/posts/... address works too.
+  var TARGET = 'https://lnkd.in/p/d2SP2Fg9';
+  var ua = navigator.userAgent || '';
+  var inApp = /Instagram|FBAN|FBAV|FB_IAB|Threads/i.test(ua);
+  var android = /Android/i.test(ua);
+  var ios = /iPhone|iPad|iPod/i.test(ua);
+  var hint = document.getElementById('hint');
+  var status = document.getElementById('status');
+
+  if (inApp && android) {
+    // Leave Instagram's in-app browser: hand the link to Chrome, which passes it to the LinkedIn app.
+    var bare = TARGET.replace(/^https?:\/\//, '');
+    location.href = 'intent://' + bare + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' +
+      encodeURIComponent(TARGET) + ';end';
+  } else if (inApp && ios) {
+    // Reopen this page in Safari; there the button opens the LinkedIn app.
+    location.href = 'x-safari-' + location.href;
+  } else {
+    // A normal browser: go straight to the post (the LinkedIn app takes over when installed).
+    setTimeout(function () { location.href = TARGET; }, 300);
+  }
+  setTimeout(function () {
+    status.textContent = 'اگر خودکار باز نشد، دکمهٔ زیر را بزنید.';
+    if (inApp) hint.hidden = false;
+  }, 1500);
+})();
+</script>
+</body>
+</html>
